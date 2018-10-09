@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      repos: []
+      repos: [],
+      languages: []
     }
   }
   componentWillMount = () => {
@@ -20,16 +21,26 @@ class App extends Component {
         this.setState({
           repos: data
         })
+        return data;
       })
+      .then(data => data.map(x=> {
+        fetch(x.languages_url)
+        .then(result => result.json())
+        .then(data => {
+          this.setState({
+            languages: this.state.languages.concat(data)
+          })
+        })
+      }))
   }
 
   render() {
     return (
       <div className="App">
-        {console.table(this.state.repos)}
         {
           (this.state.repos.length !== 0) && <ReposList repos={this.state.repos}/>
         }
+        {console.table(this.state.languages)}
       </div>
     );
   }
