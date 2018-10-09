@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ReposList from './ReposList';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      repos: []
+    }
+  }
+  componentWillMount = () => {
+    this.getRepos()
+  }
+
+  getRepos = () => {
+    fetch ('https://api.github.com/users/NelsonHui123/repos')
+      .then(result => result.json())
+      .then(data => {
+        this.setState({
+          repos: data
+        })
+      })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {console.table(this.state.repos)}
+        {
+          (this.state.repos.length !== 0) && <ReposList repos={this.state.repos}/>
+        }
       </div>
     );
   }
