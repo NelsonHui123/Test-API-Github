@@ -54,7 +54,6 @@ class App extends Component {
         {
           (this.state.repos.length !== 0) && <ReposList repos={this.state.repos}/>
         }
-        {console.table(this.state.languages)}
       </div>
     );
   }

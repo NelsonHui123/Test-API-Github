@@ -7,6 +7,9 @@ class ReposList extends Component {
                 <Fragment>
                     <h1>{repo.name}</h1>
                     <img src={repo.owner.avatar_url}/>
+                    {Object.entries(repo.language_stat).map(([key, value]) => (
+                        <div>{key} : {value}</div>
+                    ))}
                 </Fragment>
                 ))
         )
