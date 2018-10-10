@@ -45,6 +45,8 @@ class App extends Component {
 
 
       //on peut aussi utiliser async et await pour écrire du code assynchrone avec la syntaxe du code synchrone
+
+      //RAJOUTER L'ALGO POUR TRANSFORMER LES NBR CARACTÈRES EN %
     })
   }
 
