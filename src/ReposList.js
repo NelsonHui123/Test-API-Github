@@ -19,13 +19,15 @@ class ReposList extends Component {
                     {console.table(langArr)}
                     {console.log(sumCarac)}
 
-                    {
-                        langArr.map(lanSingleArr => {
-                            return(
-                                <div>{lanSingleArr[0]} : {Math.round((lanSingleArr[1] / sumCarac)*100)} % </div>
-                            )
-                        })
-                    }
+                    <div>
+                        {
+                            langArr.map(lanSingleArr => {
+                                return(
+                                    <span style={{width: (lanSingleArr[1] / sumCarac)*100 + '%', height: 5, background:'red', display: 'inline-block'}}></span>
+                                )
+                            })
+                        }
+                    </div>
 
                 </Fragment>
             )})
